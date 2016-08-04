@@ -21,30 +21,10 @@ func main() {
 	beego.Router("/task/", &controllers.TaskController{}, "get:ListTasks;post:NewTask")
 	beego.Router("/task/:id:int", &controllers.TaskController{}, "get:GetTask;put:UpdateTask")
 
-
-	//
-	//
-	//beego.Get("/get", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric get"))
-	//})
-	//beego.Post("/post", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric post"))
-	//})
-	//beego.Put("/put", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric put"))
-	//})
-	//beego.Head("/head", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric head"))
-	//})
-	//beego.Options("/option", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric option"))
-	//})
-	//beego.Delete("/delete", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric delete"))
-	//})
-	//beego.Any("/any", func(ctx *context.Context) {
-	//	ctx.Output.Body([]byte("Eric any"))
-	//})
+	beego.SetStaticPath("css","static/css")
+	beego.SetStaticPath("js","static/js")
+	beego.SetStaticPath("font-awesome-4.1.0/css","static/font-awesome-4.1.0/css")
+	beego.SetStaticPath("font-awesome-4.1.0/fonts","static/font-awesome-4.1.0/fonts")
 
 	beego.Run()
 }
