@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego"
+	"fmt"
 )
 
 // oprations for GreyServers
@@ -21,6 +22,11 @@ func (c *GreyServersController) URLMapping() {
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
+}
+
+func (c *GreyServersController) Prepare() {
+	c.EnableXSRF = false
+	c.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
 }
 
 // @Title Post
@@ -62,6 +68,17 @@ func (c *GreyServersController) GetOne() {
 	c.ServeJSON()
 }
 
+func (c *GreyServersController) GetByType() {
+	idStr := c.Ctx.Input.Param(":serverType")
+	id, _ := strconv.Atoi(idStr)
+	v, err := models.GetGreyServersById(id)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	} else {
+		c.Data["json"] = v
+	}
+	c.ServeJSON()
+}
 // @Title Get All
 // @Description get GreyServers
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
