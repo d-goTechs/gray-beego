@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego"
-	"fmt"
 )
 
 // oprations for GreyServers

@@ -10,7 +10,7 @@
  ```
     
 
-## gray Installation
+## gray run
 
 ```
 cd $GOPATH/src/gray-beego
@@ -20,6 +20,9 @@ bee run
 ## Usage
 
 ```
-http://127.0.0.1:8080
+http://localhost:9001/v1/grey_configs/1
 ```
 
+```
+http://localhost:9001/v1/grey_configs
+```
