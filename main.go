@@ -16,9 +16,12 @@ func init() {
 }
 
 func main() {
+
+	//http://127.0.0.1:9001/task
 	orm.Debug = true
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/task/", &controllers.TaskController{}, "get:ListTasks;post:NewTask")
+	//http://127.0.0.1:9001/task/1
 	beego.Router("/task/:id:int", &controllers.TaskController{}, "get:GetTask;put:UpdateTask")
 
 	beego.SetStaticPath("css","static/css")
